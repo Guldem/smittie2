@@ -1,0 +1,31 @@
+name: smittie
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flame: ^1.8.1
+  flame_tiled: ^1.12.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.2
+
+flutter:
+  uses-material-design: true
+  assets:
+     - assets/tiles/map.tmx
+     - assets/tiles/Forest_Tileset.tsx
+     - assets/images/Forest Tileset.png
+     - assets/images/ember.png
+     - assets/images/chest.png
+     - assets/images/animal_stickers/Beaver.png
+     - assets/images/animal_stickers/Lion.png
+     - assets/images/goat/
