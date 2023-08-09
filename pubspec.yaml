@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flame: ^1.8.1
   flame_tiled: ^1.12.0
+  shared_preferences: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -26,6 +27,5 @@ flutter:
      - assets/images/Forest Tileset.png
      - assets/images/ember.png
      - assets/images/chest.png
-     - assets/images/animal_stickers/Beaver.png
-     - assets/images/animal_stickers/Lion.png
+     - assets/images/animal_stickers/
      - assets/images/goat/

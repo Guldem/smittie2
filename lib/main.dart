@@ -17,7 +17,10 @@ class MyGame extends StatelessWidget {
     return GameWidget<SmittieGame>(
       game: SmittieGame(),
       overlayBuilderMap: {
-        for (var e in ChestAnimals.values) e.name: (context, game) => ChestOverlay(e.name,e.asset, game),
+        for (var e in ChestAnimals.values) e.name: (context, game) => ChestOverlay(e.name, e, game),
+        for (var e in ChestAnimals.values) ...{
+          '${e.name}-opened': (context, game) => ChestOverlay('${e.name}-opened', e, game, isOpened: true),
+        }
       },
     );
   }

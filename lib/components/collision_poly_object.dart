@@ -1,6 +1,8 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+
+import '../core/colors.dart';
 
 abstract interface class Collidable extends PositionComponent {}
 
@@ -12,13 +14,10 @@ class CollisionPolygonObject extends PositionComponent implements Collidable {
 
   @override
   Future<void> onLoad() async {
-    final defaultPaint = Paint()
-      ..color = Colors.cyan
-      ..style = PaintingStyle.stroke;
     hitbox = PolygonHitbox(vertices)
       ..collisionType = CollisionType.passive
-      ..paint = defaultPaint
-      ..renderShape = true;
+      ..paint = SColors.defaultPaint
+      ..renderShape = kDebugMode;
     add(hitbox);
     return super.onLoad();
   }

@@ -1,7 +1,9 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../core/colors.dart';
 import '../smittie_game.dart';
 import 'interactabled_object.dart';
 
@@ -11,21 +13,17 @@ class PlayerUtilityHitbox extends CircleHitbox with HasGameRef<SmittieGame> {
 
   @override
   Future<void> onLoad() async {
-    final defaultPaint = Paint()
-      ..color = Colors.cyan
-      ..style = PaintingStyle.stroke;
-
     triggersParentCollision = false;
     isSolid = true;
-    paint = defaultPaint;
-    renderShape = true;
+    paint = SColors.defaultPaint;
+    renderShape = kDebugMode;
     return super.onLoad();
   }
 
   @override
   void onCollisionStart(Set<Vector2> intersectionPoints, ShapeHitbox other) {
     super.onCollisionStart(intersectionPoints, other);
-    if (other.hitboxParent is Interactable) {
+    if (other.hitboxParent is Interactable && (other.hitboxParent as Interactable).interactable) {
       gameRef.showChestButton(other.hitboxParent as Interactable);
     }
   }

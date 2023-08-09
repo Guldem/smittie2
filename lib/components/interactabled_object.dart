@@ -1,12 +1,18 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smittie/smittie_game.dart';
 
+import '../core/colors.dart';
 import 'collision_poly_object.dart';
 
 abstract interface class Interactable extends PositionComponent {
   void interact(SmittieGame game);
+
+  bool get interactable;
+
+  String get action;
 }
 
 abstract class InteractableObject extends SpriteAnimationComponent implements Interactable, Collidable {
@@ -17,18 +23,13 @@ abstract class InteractableObject extends SpriteAnimationComponent implements In
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    final defaultPaint = Paint()
-      ..color = Colors.cyan
-      ..style = PaintingStyle.stroke;
     hitbox = RectangleHitbox()
       ..position = position
       ..size = size
       ..collisionType = CollisionType.passive
-      ..paint = defaultPaint
-      ..renderShape = true;
+      ..paint = SColors.defaultPaint
+      ..renderShape = kDebugMode;
 
     add(hitbox);
   }
-
-  void interact(SmittieGame game);
 }

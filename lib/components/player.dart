@@ -1,12 +1,13 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smittie/components/interactabled_object.dart';
 import 'package:smittie/components/player_utility_hitbox.dart';
 import 'package:smittie/smittie_game.dart';
 
+import '../core/colors.dart';
 import 'collision_poly_object.dart';
 
 class Player extends SpriteAnimationComponent with HasGameRef<SmittieGame>, KeyboardHandler, CollisionCallbacks {
@@ -85,13 +86,10 @@ class Player extends SpriteAnimationComponent with HasGameRef<SmittieGame>, Keyb
     //     stepTime: 0.15,
     //   ),
     // );
-    final defaultPaint = Paint()
-      ..color = Colors.cyan
-      ..style = PaintingStyle.stroke;
     add(PlayerUtilityHitbox(size: size, position: _lastTransform.offset));
     add(CircleHitbox()
-      ..paint = defaultPaint
-      ..renderShape = true);
+      ..paint = SColors.defaultPaint
+      ..renderShape = kDebugMode);
   }
 
   @override
@@ -124,8 +122,6 @@ class Player extends SpriteAnimationComponent with HasGameRef<SmittieGame>, Keyb
 
   @override
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    final isKeyDown = event is RawKeyDownEvent;
-
     velocity.x = 0;
     velocity.y = 0;
     velocity.x +=

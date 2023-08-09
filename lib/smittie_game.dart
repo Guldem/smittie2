@@ -11,6 +11,7 @@ import 'components/chests.dart';
 import 'components/player.dart';
 import 'components/trees.dart';
 import 'components/water.dart';
+import 'core/colors.dart';
 
 class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandlerComponents {
   SmittieGame();
@@ -19,25 +20,24 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
   late final CameraComponent cameraComponent;
 
   Interactable? _interactableObject;
-  late final HudButtonComponent chestButton;
+  late final HudButtonComponent actionButton;
   late final JoystickComponent joystick;
   late TiledComponent mapComponent;
+  TextComponent? textBoxComponent;
   late Player smittie;
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
 
-    final knobPaint = BasicPalette.blue.withAlpha(200).paint();
-    final backgroundPaint = BasicPalette.blue.withAlpha(100).paint();
-
-    chestButton = HudButtonComponent(
-        button: CircleComponent(radius: 30, paint: knobPaint),
-        margin: const EdgeInsets.only(right: 40, bottom: 40),
-        onPressed: () => _interactableObject?.interact(this));
+    actionButton = HudButtonComponent(
+      button: CircleComponent(radius: 30, paint: SColors.knobPaint),
+      margin: const EdgeInsets.only(right: 40, bottom: 40),
+      onPressed: () => _interactableObject?.interact(this),
+    );
     joystick = JoystickComponent(
-      knob: CircleComponent(radius: 30, paint: knobPaint),
-      background: CircleComponent(radius: 100, paint: backgroundPaint),
+      knob: CircleComponent(radius: 30, paint: SColors.knobPaint),
+      background: CircleComponent(radius: 100, paint: SColors.backgroundPaint),
       margin: const EdgeInsets.only(left: 40, bottom: 40),
     );
 
@@ -59,25 +59,32 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
     cameraComponent.viewfinder.zoom = 5;
     cameraComponent.follow(smittie);
 
-    addAll([cameraComponent, world, joystick]);
+    addAll([cameraComponent, world, joystick, actionButton]);
   }
 
   void closeMenu(String chestId) {
-    print('closing $chestId');
     overlays.remove(chestId);
   }
 
   void showChestButton(Interactable interactableObject) {
-    if (!contains(chestButton)) {
+    if (textBoxComponent == null) {
       _interactableObject = interactableObject;
-      add(chestButton);
+      textBoxComponent = TextComponent(
+        text: interactableObject.action,
+        textRenderer: TextPaint(
+          style: const TextStyle(fontSize: 16),
+        ),
+        position: actionButton.position - Vector2(15, 28),
+      );
+      add(textBoxComponent!);
     }
   }
 
   void hideChestButton() {
-    if (contains(chestButton)) {
+    if (textBoxComponent != null && contains(textBoxComponent!)) {
+      remove(textBoxComponent!);
       _interactableObject = null;
-      remove(chestButton);
+      textBoxComponent = null;
     }
   }
 }

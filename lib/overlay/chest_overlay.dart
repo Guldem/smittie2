@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:smittie/smittie_game.dart';
 
+import '../components/chests.dart';
+import '../strings.dart';
+
 class ChestOverlay extends StatelessWidget {
-  const ChestOverlay(this.chestId, this.path, this.game, {super.key});
+  const ChestOverlay(this.chestId, this.animal, this.game, {this.isOpened = false, super.key});
 
   final String chestId;
-  final String path;
+  final ChestAnimals animal;
   final SmittieGame game;
+  final bool isOpened;
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +29,11 @@ class ChestOverlay extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Text('Good job! You have found a chest!'),
-              Image.asset(path),
-              Text('This chest belongs to the present with the $chestId. Go ahead and open it :D'),
+              isOpened ? Text(strings.alreadyOpenedChest) : Text(strings.successOpenChest(animal.name)),
+              Image.asset(animal.asset),
               ElevatedButton(
                 onPressed: () => game.closeMenu(chestId),
-                child: const Text('Close'),
+                child: Text(strings.close),
               ),
             ],
           ),
