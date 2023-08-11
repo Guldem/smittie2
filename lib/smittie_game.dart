@@ -1,8 +1,6 @@
 import 'package:flame/components.dart';
-import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
-import 'package:flame/palette.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 import 'package:smittie/components/interactabled_object.dart';
@@ -52,6 +50,7 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
             (e) => Chest(name: e.name.toLowerCase(), position: Vector2(e.x, e.y), size: Vector2(e.width, e.height)),
           ),
     );
+
     world.addAll(Trees.fromObjectLayer(mapComponent.tileMap.getLayer<ObjectGroup>('Trees')!.objects));
     world.addAll(Waters.fromObjectLayer(mapComponent.tileMap.getLayer<ObjectGroup>('Waters')!.objects));
 

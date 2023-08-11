@@ -18,14 +18,35 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.2
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  adaptive_icon_background: "#165E28"
+  adaptive_icon_foreground: "assets/ai/stable-diffusion-xl-4.jpg"
+  ios: true
+  image_path: "assets/ai/stable-diffusion-xl-4.jpg"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/ai/stable-diffusion-xl-4.jpg"
+    background_color: "#165E28"
+    theme_color: "#165E28"
+  windows:
+    generate: true
+    image_path: "assets/ai/stable-diffusion-xl-4.jpg"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/ai/stable-diffusion-xl-4.jpg"
 
 flutter:
   uses-material-design: true
   assets:
-     - assets/tiles/map.tmx
-     - assets/tiles/Forest_Tileset.tsx
-     - assets/images/Forest Tileset.png
-     - assets/images/ember.png
-     - assets/images/chest.png
-     - assets/images/animal_stickers/
-     - assets/images/goat/
+    - assets/tiles/map.tmx
+    - assets/tiles/Forest_Tileset.tsx
+    - assets/images/Forest Tileset.png
+    - assets/images/ember.png
+    - assets/images/chest.png
+    - assets/images/animal_stickers/
+    - assets/images/goat/
