@@ -14,7 +14,7 @@ import 'core/colors.dart';
 class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandlerComponents {
   SmittieGame();
 
-  final world = World();
+  late final world = World();
   late final CameraComponent cameraComponent;
 
   Interactable? _interactableObject;
@@ -55,7 +55,7 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
     world.addAll(Waters.fromObjectLayer(mapComponent.tileMap.getLayer<ObjectGroup>('Waters')!.objects));
 
     cameraComponent = CameraComponent(world: world);
-    cameraComponent.viewfinder.zoom = 5;
+    cameraComponent.viewfinder.zoom = 3;
     cameraComponent.follow(smittie);
 
     addAll([cameraComponent, world, joystick, actionButton]);

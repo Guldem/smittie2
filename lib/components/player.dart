@@ -17,7 +17,7 @@ class Player extends SpriteAnimationComponent with HasGameRef<SmittieGame>, Keyb
           anchor: Anchor.center,
         );
 
-  static const double speed = 50;
+  static const double speed = 32 * 2;
   final Vector2 velocity = Vector2.zero();
   final JoystickComponent joystick;
   late final Transform2D _lastTransform = transform.clone();
@@ -78,14 +78,6 @@ class Player extends SpriteAnimationComponent with HasGameRef<SmittieGame>, Keyb
     );
 
     animation = idleAnimation;
-    // animation = await gameRef.loadSpriteAnimation(
-    //   'ember.png',
-    //   SpriteAnimationData.sequenced(
-    //     amount: 3,
-    //     textureSize: Vector2.all(16),
-    //     stepTime: 0.15,
-    //   ),
-    // );
     add(PlayerUtilityHitbox(size: size, position: _lastTransform.offset));
     add(CircleHitbox()
       ..paint = SColors.defaultPaint
@@ -103,7 +95,7 @@ class Player extends SpriteAnimationComponent with HasGameRef<SmittieGame>, Keyb
       } else if (!velocity.isZero()) {
         final deltaPosition = velocity * (speed * dt);
         position.add(deltaPosition);
-      }else {
+      } else {
         animation = idleAnimation;
       }
     }
