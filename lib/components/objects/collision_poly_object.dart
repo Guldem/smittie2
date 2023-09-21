@@ -2,7 +2,8 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
 
-import '../core/colors.dart';
+import '../../core/colors.dart';
+
 
 abstract interface class Collidable extends PositionComponent {}
 

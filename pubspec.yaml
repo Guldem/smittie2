@@ -13,6 +13,7 @@ dependencies:
   flame: ^1.8.1
   flame_tiled: ^1.12.0
   flutter_native_splash: ^2.3.1
+  google_fonts: ^5.1.0
   shared_preferences: ^2.2.0
 
 dev_dependencies:
@@ -50,7 +51,8 @@ flutter:
     - assets/tiles/map.tmx
     - assets/tiles/Forest_Tileset.tsx
     - assets/images/Forest Tileset.png
-    - assets/images/ember.png
-    - assets/images/chest.png
+    - assets/images/
     - assets/images/animal_stickers/
     - assets/images/goat/
+    - assets/ai/
+    - google_fonts/

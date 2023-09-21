@@ -3,13 +3,14 @@ import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
-import 'package:smittie/components/interactabled_object.dart';
+import 'package:smittie/components/objects/interactabled_object.dart';
 
-import 'components/chests.dart';
+import 'components/objects/chests.dart';
+import 'components/objects/trees.dart';
 import 'components/player.dart';
-import 'components/trees.dart';
-import 'components/water.dart';
+import 'components/objects/water.dart';
 import 'core/colors.dart';
+import 'core/text_style.dart';
 
 class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandlerComponents {
   SmittieGame();
@@ -42,17 +43,19 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
     mapComponent = await TiledComponent.load('map.tmx', Vector2.all(32));
 
     final startPos = mapComponent.tileMap.getLayer<ObjectGroup>('Misc')!.objects.first;
+    smittie = Player(joystick, position: Vector2(startPos.x, startPos.y));
 
-    world.add(mapComponent);
-    world.add(smittie = Player(joystick, position: Vector2(startPos.x, startPos.y)));
     world.addAll(
-      mapComponent.tileMap.getLayer<ObjectGroup>('Pickups')!.objects.map(
-            (e) => Chest(name: e.name.toLowerCase(), position: Vector2(e.x, e.y), size: Vector2(e.width, e.height)),
-          ),
+      [
+        mapComponent,
+        smittie,
+        ...mapComponent.tileMap.getLayer<ObjectGroup>('Pickups')!.objects.map(
+              (e) => Chest(name: e.name.toLowerCase(), position: Vector2(e.x, e.y), size: Vector2(e.width, e.height)),
+            ),
+        ...Trees.fromObjectLayer(mapComponent.tileMap.getLayer<ObjectGroup>('Trees')!.objects),
+        ...Waters.fromObjectLayer(mapComponent.tileMap.getLayer<ObjectGroup>('Waters')!.objects),
+      ],
     );
-
-    world.addAll(Trees.fromObjectLayer(mapComponent.tileMap.getLayer<ObjectGroup>('Trees')!.objects));
-    world.addAll(Waters.fromObjectLayer(mapComponent.tileMap.getLayer<ObjectGroup>('Waters')!.objects));
 
     cameraComponent = CameraComponent(world: world);
     cameraComponent.viewfinder.zoom = 3;
@@ -71,7 +74,7 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
       textBoxComponent = TextComponent(
         text: interactableObject.action,
         textRenderer: TextPaint(
-          style: const TextStyle(fontSize: 16),
+          style: defaultTextStyle,
         ),
         position: actionButton.position - Vector2(15, 28),
       );

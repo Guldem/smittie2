@@ -1,11 +1,10 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 import '../core/colors.dart';
 import '../smittie_game.dart';
-import 'interactabled_object.dart';
+import 'objects/interactabled_object.dart';
 
 class PlayerUtilityHitbox extends CircleHitbox with HasGameRef<SmittieGame> {
   PlayerUtilityHitbox({required Vector2 size, required Vector2 position})

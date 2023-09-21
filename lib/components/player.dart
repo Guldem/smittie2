@@ -8,12 +8,12 @@ import 'package:smittie/components/player_utility_hitbox.dart';
 import 'package:smittie/smittie_game.dart';
 
 import '../core/colors.dart';
-import 'collision_poly_object.dart';
+import 'objects/collision_poly_object.dart';
 
 class Player extends SpriteAnimationComponent with HasGameRef<SmittieGame>, KeyboardHandler, CollisionCallbacks {
   Player(this.joystick, {super.position, Vector2? size, super.priority})
       : super(
-          size: size ?? Vector2.all(16),
+          size: size ?? Vector2.all(32),
           anchor: Anchor.center,
         );
 

@@ -1,7 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smittie/components/interactabled_object.dart';
+import 'package:smittie/components/objects/interactabled_object.dart';
 import 'package:smittie/smittie_game.dart';
+import 'package:smittie/strings.dart';
 
 class Chest extends InteractableObject with HasGameRef<SmittieGame> {
   Chest({required this.name, super.position, super.size});
@@ -49,23 +50,5 @@ class Chest extends InteractableObject with HasGameRef<SmittieGame> {
   @override
   bool get interactable => animation != openAnimation;
 
-  String get action => 'Open kistje';
-}
-
-enum ChestAnimals {
-  bear('assets/images/animal_stickers/bear.png'),
-  chicken('assets/images/animal_stickers/chicken.png'),
-  cow('assets/images/animal_stickers/cow.png'),
-  dog('assets/images/animal_stickers/dog.png'),
-  duck('assets/images/animal_stickers/duck.png'),
-  elephant('assets/images/animal_stickers/elephant.png'),
-  giraffe('assets/images/animal_stickers/giraffe.png'),
-  goat('assets/images/animal_stickers/goat.png'),
-  monkey('assets/images/animal_stickers/monkey.png'),
-  owl('assets/images/animal_stickers/owl.png'),
-  pig('assets/images/animal_stickers/pig.png');
-
-  const ChestAnimals(this.asset);
-
-  final String asset;
+  String get action => strings.openChest;
 }

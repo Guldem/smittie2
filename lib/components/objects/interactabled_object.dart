@@ -1,10 +1,9 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:smittie/smittie_game.dart';
 
-import '../core/colors.dart';
+import '../../core/colors.dart';
 import 'collision_poly_object.dart';
 
 abstract interface class Interactable extends PositionComponent {
