@@ -3,8 +3,10 @@ import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smittie/components/objects/interactabled_object.dart';
 
+import 'components/objects/chest_animals.dart';
 import 'components/objects/chests.dart';
 import 'components/objects/trees.dart';
 import 'components/player.dart';
@@ -23,6 +25,7 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
   late final JoystickComponent joystick;
   late TiledComponent mapComponent;
   TextComponent? textBoxComponent;
+  TextComponent? countTextBoxComponent;
   late Player smittie;
 
   @override
@@ -32,7 +35,7 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
     actionButton = HudButtonComponent(
       button: CircleComponent(radius: 30, paint: SColors.knobPaint),
       margin: const EdgeInsets.only(right: 40, bottom: 40),
-      onPressed: () => _interactableObject?.interact(this),
+      onPressed: () => _interactableObject?.interact(this, updateCount),
     );
     joystick = JoystickComponent(
       knob: CircleComponent(radius: 30, paint: SColors.knobPaint),
@@ -62,6 +65,7 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
     cameraComponent.follow(smittie);
 
     addAll([cameraComponent, world, joystick, actionButton]);
+    updateCount();
   }
 
   void closeMenu(String chestId) {
@@ -74,7 +78,7 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
       textBoxComponent = TextComponent(
         text: interactableObject.action,
         textRenderer: TextPaint(
-          style: defaultTextStyle,
+          style: defaultTextStyle.copyWith(fontSize: 20),
         ),
         position: actionButton.position - Vector2(15, 28),
       );
@@ -88,5 +92,42 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
       _interactableObject = null;
       textBoxComponent = null;
     }
+  }
+
+  void updateCount() async {
+    if (countTextBoxComponent != null && contains(countTextBoxComponent!)) {
+      remove(countTextBoxComponent!);
+      countTextBoxComponent = null;
+    }
+    final animals = [
+      ChestAnimals.snake,
+      ChestAnimals.owl,
+      ChestAnimals.frog,
+      ChestAnimals.bear,
+      ChestAnimals.dog,
+      ChestAnimals.moose,
+      ChestAnimals.rabbit,
+      ChestAnimals.chicken,
+      ChestAnimals.monkey,
+      ChestAnimals.duck,
+      ChestAnimals.horse,
+      ChestAnimals.chick,
+      ChestAnimals.goat,
+      ChestAnimals.gorilla,
+      ChestAnimals.parrot,
+      ChestAnimals.buffalo,
+    ];
+
+    final prefs = await SharedPreferences.getInstance();
+
+    final count = animals.where((animals) => prefs.getBool(animals.name) ?? false).length;
+    countTextBoxComponent = TextComponent(
+      text: '$count/${animals.length}',
+      textRenderer: TextPaint(
+        style: defaultTextStyle.copyWith(fontSize: 20),
+      ),
+      position: Vector2(10, 10),
+    );
+    add(countTextBoxComponent!);
   }
 }

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="Forest_Tileset" tilewidth="32" tileheight="32" tilecount="323" columns="19">
+<tileset version="1.10" tiledversion="1.10.2" name="Forest_Tileset" tilewidth="32" tileheight="32" tilecount="323" columns="19">
  <image source="../images/Forest Tileset.png" width="639" height="544"/>
+ <tile id="18" probability="0.03"/>
+ <tile id="37" probability="0.03"/>
+ <tile id="56" probability="0.03"/>
+ <tile id="74" probability="0.02"/>
+ <tile id="75" probability="0.02"/>
+ <tile id="94" probability="0.02"/>
+ <tile id="127" probability="0.02"/>
+ <tile id="128" probability="0.02"/>
+ <tile id="129" probability="0.02"/>
+ <tile id="146" probability="0.02"/>
+ <tile id="147" probability="0.02"/>
+ <tile id="148" probability="0.02"/>
  <wangsets>
   <wangset name="Forest ground" type="edge" tile="-1">
    <wangcolor name="Dirt" color="#ff0000" tile="-1" probability="1"/>
@@ -118,6 +130,20 @@
    <wangtile tileid="305" wangid="0,1,0,0,0,0,0,1"/>
    <wangtile tileid="306" wangid="0,1,0,0,0,0,0,1"/>
    <wangtile tileid="307" wangid="0,1,0,0,0,0,0,1"/>
+  </wangset>
+  <wangset name="shadows" type="corner" tile="-1">
+   <wangcolor name="" color="#ff0000" tile="-1" probability="1"/>
+   <wangtile tileid="166" wangid="0,1,0,1,0,1,0,1"/>
+   <wangtile tileid="167" wangid="0,0,0,1,0,0,0,0"/>
+   <wangtile tileid="168" wangid="0,0,0,1,0,1,0,0"/>
+   <wangtile tileid="169" wangid="0,0,0,0,0,1,0,0"/>
+   <wangtile tileid="170" wangid="0,0,0,0,0,0,0,1"/>
+   <wangtile tileid="186" wangid="0,1,0,1,0,0,0,0"/>
+   <wangtile tileid="188" wangid="0,0,0,0,0,1,0,1"/>
+   <wangtile tileid="189" wangid="0,0,0,0,0,1,0,0"/>
+   <wangtile tileid="205" wangid="0,1,0,0,0,0,0,0"/>
+   <wangtile tileid="206" wangid="0,1,0,0,0,0,0,1"/>
+   <wangtile tileid="207" wangid="0,0,0,0,0,0,0,1"/>
   </wangset>
  </wangsets>
 </tileset>

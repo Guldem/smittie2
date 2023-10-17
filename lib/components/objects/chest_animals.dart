@@ -36,13 +36,22 @@ enum ChestAnimals {
   final String displayName;
 
   String? get rhyme => switch (this) {
-        crocodile => 'Lekker spetteren in bad\nOjee, nu ben je wel helemaal nat',
-        bear => 'Baan, spuug, zand en modder\nEr zit altijd wel ergens een klodder',
-        pig => 'Zelf met je handen eten, dat is te gek\nToch gaat het later beter met bestek',
-        goat => 'Een warme trui, dat is fijn\nDat geldt ook voor meneer Konijn',
-        snake => 'O,o,o wat een pret,\nLetter voor letter wordt je naam gezet',
-        chick => 'Naald voor naald, pand en armen\nOm jou deze winter mee te verwarmen',
-        moose => 'Vind je dat niet hip?\nSamen met Nijntje op de wip',
+        snake => 'Lekker spetteren in bad. Ojee, nu ben je wel helemaal nat.',
+        owl => 'Baan, spuug, zand en modder. Er zit altijd wel ergens een klodder.',
+        frog => 'Zelf met je handen eten, dat is te gek. Toch gaat het later beter met bestek.',
+        bear => 'Een warme trui, dat is fijn. Dat geldt ook voor meneer Konijn.',
+        dog => 'O,o,o wat een pret, letter voor letter wordt je naam gezet.',
+        moose => 'Naald voor naald, pand en armen, om jou deze winter mee te verwarmen.',
+        rabbit => 'Vind je dat niet hip? Samen met Nijntje op de wip.',
+        chicken => 'Papa en mama staan je bij, dag en nacht. Dit helpt hen te vinden waar je zo naar smacht.',
+        monkey => 'Je belangrijkste boek moet je goed bewaren, zodat je er veel avonturen mee kan sparen.',
+        duck => 'Op het leven proosten kun je niet alleen, daarom is er zowel voor jou als Jelle 1!',
+        horse => 'Shake it off, shake it off!',
+        chick => 'De kleren van je broer zullen vast goed staan, maar soms wil je gewoon iets nieuws aan!',
+        goat => 'Met al dat kwijlen kun je wel blijven dweilen...',
+        gorilla => 'Wat kun je nou beter krijgen, dan iets om mee te rijgen?',
+        parrot => 'In het bos vind je een egel, een haas en misschien zelfs een vos!',
+        buffalo => 'We wilden iets geven van papier, en toen zei Charlie "deze hier!"',
         _ => null,
       };
 }

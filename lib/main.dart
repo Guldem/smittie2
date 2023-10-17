@@ -30,21 +30,19 @@ class _MyGameState extends State<MyGame> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: GameWidget<SmittieGame>(
-        game: SmittieGame(),
-        // initialActiveOverlays: const ['welcome'],
-        initialActiveOverlays: const ['pig'],
-        overlayBuilderMap: {
-          'welcome': (context, game) => WelcomeOverLay(
-                onPressed: () => game.overlays.remove('welcome'),
-              ),
-          for (var e in ChestAnimals.values) e.name: (context, game) => ChestOverlay(e.name, e, game),
-          for (var e in ChestAnimals.values) ...{
-            '${e.name}-opened': (context, game) => ChestOverlay('${e.name}-opened', e, game, isOpened: true),
-          }
-        },
-      ),
+    return GameWidget<SmittieGame>(
+      game: SmittieGame(),
+      initialActiveOverlays: const ['welcome'],
+      // initialActiveOverlays: const ['snake'],
+      overlayBuilderMap: {
+        'welcome': (context, game) => WelcomeOverLay(
+              onPressed: () => game.overlays.remove('welcome'),
+            ),
+        for (var e in ChestAnimals.values) e.name: (context, game) => ChestOverlay(e.name, e, game),
+        for (var e in ChestAnimals.values) ...{
+          '${e.name}-opened': (context, game) => ChestOverlay('${e.name}-opened', e, game, isOpened: true),
+        }
+      },
     );
   }
 }

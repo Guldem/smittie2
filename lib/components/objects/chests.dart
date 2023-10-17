@@ -33,13 +33,14 @@ class Chest extends InteractableObject with HasGameRef<SmittieGame> {
   }
 
   @override
-  void interact(SmittieGame game) {
+  void interact(SmittieGame game, void Function() onComplete) {
     animation = openAnimation;
     animationTicker?.onComplete = () async {
       final prefs = await SharedPreferences.getInstance();
       final isOpened = prefs.getBool(name);
       if (isOpened == null || !isOpened) {
         prefs.setBool(name, true);
+        onComplete();
         game.overlays.add(name);
       } else {
         game.overlays.add('$name-opened');

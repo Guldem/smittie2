@@ -7,7 +7,7 @@ import '../../core/colors.dart';
 import 'collision_poly_object.dart';
 
 abstract interface class Interactable extends PositionComponent {
-  void interact(SmittieGame game);
+  void interact(SmittieGame game, void Function() onComplete);
 
   bool get interactable;
 
