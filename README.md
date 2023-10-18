@@ -1,16 +1,18 @@
-# smittie
+# Smittie2
 
-A new Flutter project.
+A little surprise game I made for my sister-in-law and her husband when they got their second child. For their first child I also created a surprise app so this time I had to up my game.
 
-## Getting Started
+## The game
+The game is relatively simple. The goal is to find all the treasure chests which correspond to real-life presents in a digital forest.
 
-This project is a starting point for a Flutter application.
+![screenshot](example.png)
 
-A few resources to get you started if this is your first Flutter project:
+## Tools
+The game is made with the following tools/frameworks:
+- [Flutter](https://flutter.dev/)
+- [Flame game engine](https://flame-engine.org/)
+- [Tiled map editor](https://www.mapeditor.org/)
+- [Stable Diffusion](https://stablediffusionweb.com/) (for some image generation)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Run
+Install the flutter sdk and run `flutter pub get` to fetch all the dependencies. Run `flutter run` to run the game.
