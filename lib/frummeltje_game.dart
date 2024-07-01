@@ -4,7 +4,7 @@ import 'package:flame/input.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smittie/components/objects/interactabled_object.dart';
+import 'package:frummeltje/components/objects/interactabled_object.dart';
 
 import 'components/objects/chest_animals.dart';
 import 'components/objects/chests.dart';
@@ -14,9 +14,10 @@ import 'components/objects/water.dart';
 import 'core/colors.dart';
 import 'core/text_style.dart';
 
-class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandlerComponents {
-  SmittieGame();
+class FrummeltjeGame extends FlameGame with HasCollisionDetection, HasKeyboardHandlerComponents {
+  FrummeltjeGame();
 
+  @override
   late final world = World();
   late final CameraComponent cameraComponent;
 
@@ -26,7 +27,7 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
   late TiledComponent mapComponent;
   TextComponent? textBoxComponent;
   TextComponent? countTextBoxComponent;
-  late Player smittie;
+  late Player frummeltje;
 
   @override
   Future<void> onLoad() async {
@@ -46,12 +47,12 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
     mapComponent = await TiledComponent.load('map.tmx', Vector2.all(32));
 
     final startPos = mapComponent.tileMap.getLayer<ObjectGroup>('Misc')!.objects.first;
-    smittie = Player(joystick, position: Vector2(startPos.x, startPos.y));
+    frummeltje = Player(joystick, position: Vector2(startPos.x, startPos.y));
 
     world.addAll(
       [
         mapComponent,
-        smittie,
+        frummeltje,
         ...mapComponent.tileMap.getLayer<ObjectGroup>('Pickups')!.objects.map(
               (e) => Chest(name: e.name.toLowerCase(), position: Vector2(e.x, e.y), size: Vector2(e.width, e.height)),
             ),
@@ -62,7 +63,7 @@ class SmittieGame extends FlameGame with HasCollisionDetection, HasKeyboardHandl
 
     cameraComponent = CameraComponent(world: world);
     cameraComponent.viewfinder.zoom = 3;
-    cameraComponent.follow(smittie);
+    cameraComponent.follow(frummeltje);
 
     addAll([cameraComponent, world, joystick, actionButton]);
     updateCount();

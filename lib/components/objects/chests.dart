@@ -1,10 +1,10 @@
 import 'package:flame/components.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smittie/components/objects/interactabled_object.dart';
-import 'package:smittie/smittie_game.dart';
-import 'package:smittie/strings.dart';
+import 'package:frummeltje/components/objects/interactabled_object.dart';
+import 'package:frummeltje/frummeltje_game.dart';
+import 'package:frummeltje/strings.dart';
 
-class Chest extends InteractableObject with HasGameRef<SmittieGame> {
+class Chest extends InteractableObject with HasGameRef<FrummeltjeGame> {
   Chest({required this.name, super.position, super.size});
 
   final String name;
@@ -33,7 +33,7 @@ class Chest extends InteractableObject with HasGameRef<SmittieGame> {
   }
 
   @override
-  void interact(SmittieGame game, void Function() onComplete) {
+  void interact(FrummeltjeGame game, void Function() onComplete) {
     animation = openAnimation;
     animationTicker?.onComplete = () async {
       final prefs = await SharedPreferences.getInstance();
@@ -51,5 +51,6 @@ class Chest extends InteractableObject with HasGameRef<SmittieGame> {
   @override
   bool get interactable => animation != openAnimation;
 
+  @override
   String get action => strings.openChest;
 }

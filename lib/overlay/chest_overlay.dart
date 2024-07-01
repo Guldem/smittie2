@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:smittie/smittie_game.dart';
+import 'package:frummeltje/frummeltje_game.dart';
 
 import '../components/objects/chest_animals.dart';
 import '../core/text_style.dart';
@@ -12,7 +12,7 @@ class ChestOverlay extends StatelessWidget {
 
   final String chestId;
   final ChestAnimals animal;
-  final SmittieGame game;
+  final FrummeltjeGame game;
   final bool isOpened;
 
   @override
@@ -41,18 +41,18 @@ class ChestOverlay extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    isOpened
-                        ? Text(
-                            strings.alreadyOpenedChest,
-                            style: textSize,
-                            textAlign: TextAlign.center,
-                          )
-                        : Text(
-                            animal.rhyme ?? '',
-                            style: textSize,
-                            textAlign: TextAlign.center,
-                          ),
+                    if (isOpened)
+                      Text(
+                        strings.alreadyOpenedChest,
+                        style: textSize,
+                        textAlign: TextAlign.center,
+                      ),
                     Image.asset(animal.asset, height: imageSize, width: imageSize),
+                    Text(
+                      animal.displayName,
+                      style: textSize,
+                      textAlign: TextAlign.center,
+                    ),
                     SpriteButton.asset(
                       path: 'wooden-gui-32x32.png',
                       pressedPath: 'wooden-gui-32x32.png',

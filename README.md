@@ -1,4 +1,4 @@
-# Smittie2
+# frummeltje2
 
 A little surprise game I made for my sister-in-law and her husband when they got their second child. For their first child I also created a surprise app so this time I had to up my game.
 

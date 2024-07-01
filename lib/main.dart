@@ -2,7 +2,7 @@ import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smittie/smittie_game.dart';
+import 'package:frummeltje/frummeltje_game.dart';
 
 import 'components/objects/chest_animals.dart';
 import 'overlay/chest_overlay.dart';
@@ -14,7 +14,7 @@ void main() {
 }
 
 class MyGame extends StatefulWidget {
-  const MyGame({Key? key}) : super(key: key);
+  const MyGame({super.key});
 
   @override
   State<MyGame> createState() => _MyGameState();
@@ -30,8 +30,8 @@ class _MyGameState extends State<MyGame> {
 
   @override
   Widget build(BuildContext context) {
-    return GameWidget<SmittieGame>(
-      game: SmittieGame(),
+    return GameWidget<FrummeltjeGame>(
+      game: FrummeltjeGame(),
       initialActiveOverlays: const ['welcome'],
       // initialActiveOverlays: const ['snake'],
       overlayBuilderMap: {

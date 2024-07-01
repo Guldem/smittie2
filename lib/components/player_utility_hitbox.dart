@@ -3,10 +3,10 @@ import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
 
 import '../core/colors.dart';
-import '../smittie_game.dart';
+import '../frummeltje_game.dart';
 import 'objects/interactabled_object.dart';
 
-class PlayerUtilityHitbox extends CircleHitbox with HasGameRef<SmittieGame> {
+class PlayerUtilityHitbox extends CircleHitbox with HasGameRef<FrummeltjeGame> {
   PlayerUtilityHitbox({required Vector2 size, required Vector2 position})
       : super.relative(2, parentSize: size, position: position);
 

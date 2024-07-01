@@ -1,6 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:frummeltje/strings.dart';
 
 import '../core/text_style.dart';
 
@@ -39,9 +40,9 @@ class WelcomeOverLay extends StatelessWidget {
                       right: 2 * 32,
                       child: Column(
                         children: [
-                          Text('De avonturen van Smittie 2', style: defaultTextStyle.copyWith(fontSize: 32), textAlign: TextAlign.center),
+                          Text(strings.title, style: defaultTextStyle.copyWith(fontSize: 32), textAlign: TextAlign.center),
                           const SizedBox(height: 32),
-                          Text('Weet jij alle dieren te vinden?', style: defaultTextStyle.copyWith(fontSize: 18), textAlign: TextAlign.center),
+                          Text(strings.description, style: defaultTextStyle.copyWith(fontSize: 18), textAlign: TextAlign.center),
                         ],
                       ),
                     )

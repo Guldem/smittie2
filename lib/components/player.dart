@@ -2,15 +2,14 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smittie/components/player_utility_hitbox.dart';
-import 'package:smittie/smittie_game.dart';
+import 'package:frummeltje/components/player_utility_hitbox.dart';
+import 'package:frummeltje/frummeltje_game.dart';
 
 import '../core/colors.dart';
 import 'objects/collision_poly_object.dart';
 
-class Player extends SpriteAnimationComponent with HasGameRef<SmittieGame>, KeyboardHandler, CollisionCallbacks {
+class Player extends SpriteAnimationComponent with HasGameRef<FrummeltjeGame>, KeyboardHandler, CollisionCallbacks {
   Player(this.joystick, {super.position, Vector2? size, super.priority})
       : super(
           size: size ?? Vector2.all(32),

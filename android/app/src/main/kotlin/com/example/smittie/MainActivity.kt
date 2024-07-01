@@ -1,4 +1,4 @@
-package com.example.smittie
+package nl.guldem.frummeltje
 
 import io.flutter.embedding.android.FlutterActivity
 

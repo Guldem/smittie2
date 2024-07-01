@@ -8,6 +8,8 @@ abstract interface class Strings {
   String successOpenChest(String animal);
 
   String get alreadyOpenedChest;
+  String get title;
+  String get description;
 }
 
 class NLStrings implements Strings {
@@ -24,4 +26,10 @@ class NLStrings implements Strings {
 
   @override
   String successOpenChest(String animal) => 'Gefeliciteerd! Je hebt het kado met de $animal gevonden.';
+
+  @override
+  String get description => 'Weet jij alle dieren te vinden?';
+
+  @override
+  String get title => 'De avonturen van Fruimeltje';
 }
