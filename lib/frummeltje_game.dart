@@ -101,22 +101,21 @@ class FrummeltjeGame extends FlameGame with HasCollisionDetection, HasKeyboardHa
       countTextBoxComponent = null;
     }
     final animals = [
-      ChestAnimals.snake,
-      ChestAnimals.owl,
-      ChestAnimals.frog,
-      ChestAnimals.bear,
-      ChestAnimals.dog,
-      ChestAnimals.moose,
-      ChestAnimals.rabbit,
-      ChestAnimals.chicken,
-      ChestAnimals.monkey,
-      ChestAnimals.duck,
-      ChestAnimals.horse,
-      ChestAnimals.chick,
       ChestAnimals.goat,
+      ChestAnimals.chick,
+      ChestAnimals.horse,
+      ChestAnimals.duck,
+      ChestAnimals.monkey,
+      ChestAnimals.chicken,
+      ChestAnimals.rabbit,
+      ChestAnimals.moose,
+      ChestAnimals.frog,
+      ChestAnimals.owl,
+      ChestAnimals.snake,
       ChestAnimals.gorilla,
       ChestAnimals.parrot,
       ChestAnimals.buffalo,
+      ChestAnimals.walrus,
     ];
 
     final prefs = await SharedPreferences.getInstance();
