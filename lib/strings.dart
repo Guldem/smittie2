@@ -16,7 +16,7 @@ class NLStrings implements Strings {
   const NLStrings();
 
   @override
-  String get alreadyOpenedChest => 'Helaas! Je hebt deze kist is al geopend.';
+  String get alreadyOpenedChest => 'Helaas! Je hebt deze kist al eens geopend.';
 
   @override
   String get close => 'Sluiten';
